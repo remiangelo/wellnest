@@ -12,18 +12,9 @@ import { userFormValidation } from "@/lib/validation"
 import { error } from "console"
 import { useRouter } from "next/navigation"
 import { createUser } from "@/lib/actions/patients.actions"
+import {FormFieldType} from "@/components/forms/PatientForm";
 
-export enum FormFieldType {
-    INPUT = "input",
-    TEXTAREA = "textarea",
-    PHONE_INPUT = "phoneinput",
-    CHECKBOX = "checkbox",
-    DATE_PICKER = "datepicker",
-    SELECT = "select",
-    SKELETON = "skeleton"
-}
-
-const RegisterForm = () => {
+const RegisterForm = ({ user }: { user: User }) => {
     const router = useRouter();
     const [isLoading, setisLoading] = useState(false);
     // 1. Define your form.
@@ -53,10 +44,16 @@ const RegisterForm = () => {
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 flex-1">
-                <section className="mb-12 space-y-4">
-                    <h1 className="header">Hi there 👋</h1>
-                    <p className="text-dark-700">Schedule your first appointment.</p>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12 flex-1">
+                <section className="space-y-4">
+                    <h1 className="header">Welcome 👋</h1>
+                    <p className="text-dark-700">Let us know more about you!</p>
+                </section>
+
+                <section className="space-y-6">
+                    <div className="mb-9 space-y-1">
+                    <h2 className="sub-header">Personal Information</h2>
+                    </div>
                 </section>
 
                 <CustomFormField
@@ -69,25 +66,7 @@ const RegisterForm = () => {
                     iconAlt="user"
                 />
 
-                <CustomFormField
-                    fieldType={FormFieldType.INPUT}
-                    control={form.control}
-                    name="email"
-                    label="Email"
-                    placeholder="JohnDoe@email.com"
-                    iconSrc="/assets/icons/email.svg"
-                    iconAlt="email"
-                />
-
-                <CustomFormField
-                    fieldType={FormFieldType.PHONE_INPUT}
-                    control={form.control}
-                    name="phone"
-                    label="Phone Number"
-                    placeholder="(555) 123-4567"
-                />
-
-                <SubmitButton isLoading={isLoading} >Get Started</SubmitButton>
+                <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
             </form>
         </Form>
     )

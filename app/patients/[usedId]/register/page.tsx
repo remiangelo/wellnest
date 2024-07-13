@@ -3,18 +3,21 @@ import React from 'react'
 import PatientForm from "@/components/forms/PatientForm";
 import Link from "next/link";
 import RegisterForm from "@/components/forms/RegisterForm";
+import {getUser} from "@/lib/actions/patients.actions";
 
-const Register = () => {
+const Register = async ({ params: { userId } }: SearchParamProps ) => {
+    const user = await getUser(userId);
+
     return (
         <div className="flex h-screen max-h-screen">
-            {/* TODO: OTP Verification | PassKey Modal */}
+             {/*todo: OTP Verification | PassKey Modal */}
 
             <section className="remove-scrollbar container my-auto">
                 <div className="sub-container max-w-[496]">
                     <Image src="/assets/icons/logo-full.svg" height={1000} width={1000} alt="icon"
                            className="mb-12 h-10 w-fit"/>
 
-                    <RegisterForm />
+                    <RegisterForm user={user} />
 
                     <div className="text-14-regular mt-20 flex justify-between">
                         <p className="justify-items-end text-dark-600 xl:text-left">
