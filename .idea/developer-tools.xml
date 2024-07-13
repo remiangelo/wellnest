@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DeveloperToolsToolWindowSettingsV1" lastSelectedContentNodeId="date-time-converter">
+    <developerToolsConfigurations>
+      <developerToolConfiguration developerToolId="color-picker" id="dead41df-2cf2-4dd9-995f-a2c1421d6ffe" name="Workbench">
+        <properties>
+          <property key="selectedColor" type="INPUT" value="com.intellij.ui.JBColor|-5149489" />
+        </properties>
+      </developerToolConfiguration>
+      <developerToolConfiguration developerToolId="code-style-formatting" id="c45f1ba6-2937-4d7a-bd82-26bfb6dc9119" name="Workbench">
+        <properties>
+          <property key="languageId" type="CONFIGURATION" value="kotlin.String|TypeScript" />
+        </properties>
+      </developerToolConfiguration>
+    </developerToolsConfigurations>
+  </component>
+</project>
