@@ -21,6 +21,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+// Antialiasing doesn't break the site vs the corrected word
   return (
     <html lang="en">
       <body className={cn('min-h-screen bg-dark-300 font-sans antialiased', fontSans.variable)}>
