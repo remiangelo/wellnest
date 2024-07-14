@@ -8,7 +8,7 @@ import {
     FormItem,
     FormLabel,
     FormMessage,
-  } from "@/components/ui/form"
+    } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Control } from "react-hook-form"
 import { FormFieldType } from "./forms/PatientForm"
@@ -19,6 +19,7 @@ import PhoneInput from "react-phone-number-input"
 import {E164Number} from "libphonenumber-js";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Select, SelectContent, SelectTrigger, SelectValue } from "./ui/select"
 
 
 interface CustomProps {
@@ -73,6 +74,21 @@ const RenderField = ({field, props }: {field: any; props: CustomProps;}) => {
                     />
                 </FormControl>
             )
+        case FormFieldType.SELECT:
+            return (
+                <FormControl>
+                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <FormControl>
+                        <SelectTrigger className="shad-select-trigger">
+                        <SelectValue placeholder={placeholder}/>
+                        </SelectTrigger>
+                        </FormControl>
+                        <SelectContent className="shad-select-content">
+                            {props.children}
+                        </SelectContent>
+                    </Select>
+                </FormControl>
+            )
         case FormFieldType.DATE_PICKER:
             return (
                 <div className="flex rounded-md border border-dark-500 bg-dark-400">
@@ -104,12 +120,12 @@ const RenderField = ({field, props }: {field: any; props: CustomProps;}) => {
 
 const CustomFormField = (props: CustomProps) => {
     const { control, fieldType, name, label } = props;
-  return (
-   <FormField
+    return (
+    <FormField
     control={control}
     name={name}
     render={({ field }) => (
-      <FormItem className="flex-1">
+        <FormItem className="flex-1">
         {fieldType !== FormFieldType.CHECKBOX && label && (
             <FormLabel>{label}</FormLabel>
         )}
@@ -119,8 +135,8 @@ const CustomFormField = (props: CustomProps) => {
             <FormMessage className="shad-error"/>
         </FormItem>
         )}
-      />   
-  ) 
+        />   
+    ) 
 }
 
 export default CustomFormField
