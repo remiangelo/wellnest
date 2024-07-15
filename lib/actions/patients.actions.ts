@@ -1,7 +1,7 @@
 'use server';
 
 import {ID, Query} from "node-appwrite";
-import {databases, storage, users} from "@/lib/appwrite.config";
+import {databases, storage, users} from "../appwrite.config";
 import { parseStringify} from "@/lib/utils";
 import { InputFile } from "node-appwrite/file";
 
@@ -33,9 +33,13 @@ export const getUser = async (userId: string) => {
         const user = await users.get(userId);
         return parseStringify(user);
     } catch (error) {
-        console.log(error);
+        console.log(
+            "an error occurred", 1234
+        );
     }
-}
+};
+
+
 
 export const registerPatient = async ({ identificationDocument, ...patient} :
     RegisterUserParams) => {

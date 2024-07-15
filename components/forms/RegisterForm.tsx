@@ -21,7 +21,6 @@ import Image from "next/image"
 import FileUploader from "../FileUploader"
 
 
-
 const RegisterForm = ({ user }: { user: User }) => {
     const router = useRouter();
     const [isLoading, setisLoading] = useState(false);
@@ -65,6 +64,8 @@ const RegisterForm = ({ user }: { user: User }) => {
         } catch (error) {
             console.log(error);
         }
+    
+        setisLoading(false);
     }
 
     return (
