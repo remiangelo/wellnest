@@ -1,5 +1,5 @@
 "use client"
- 
+
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
@@ -35,7 +35,7 @@ const PatientForm = () => {
       phone: "",
     },
   })
- 
+
   // 2. Define a submit handler.
   async function onSubmit({name, email, phone }: z.infer<typeof userFormValidation>) {
     setisLoading:(true);
